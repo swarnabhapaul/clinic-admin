@@ -1,0 +1,79 @@
+<div class="login">
+  <div>
+    <div class="login_wrapper">
+      <div class="animate form login_form">
+        <section class="login_content">
+
+          <form #loginForm="ngForm" (ngSubmit)="adminLogin(loginForm)">
+            <h1>Clinic Backend</h1>
+            <div>
+              <select
+              name="typeofuser"
+              id="typeofuser"
+              class="form-control" 
+              autocomplete="off"
+              maxlength="255"
+              #typeofuserRef="ngModel"
+              ngModel
+              required 
+              >
+                <option value="superadmin">Super Admin</option>
+                <option value="clinic">Clinic</option>
+                <option value="receptionist">Receptionist</option>
+              </select>
+              
+            </div>
+            <div class="text-danger" *ngIf="(loginForm.submitted && typeofuserRef.errors) || (typeofuserRef.invalid && typeofuserRef.touched)">Please Select User type</div>
+            <br>
+            <div>
+              <input 
+              type="text"  
+              name="lusername"
+              id="lusername"
+              class="form-control" 
+              placeholder="Username" 
+              autocomplete="off"
+              maxlength="255"
+              #lusernameRef="ngModel"
+              ngModel
+              required />
+            </div>
+            <div class="text-danger" *ngIf="(loginForm.submitted && lusernameRef.errors) || (lusernameRef.invalid && lusernameRef.touched)">Please Enter Username</div>
+            <div>
+              <input 
+              type="password"  
+              name="lpassword"
+              id="lpassword"
+              class="form-control" 
+              placeholder="Password" 
+              autocomplete="off"
+              maxlength="255"
+              #lpasswordRef="ngModel"
+              ngModel
+              required />
+            </div>
+            <div class="text-danger" *ngIf="(loginForm.submitted && lpasswordRef.errors) || (lpasswordRef.invalid && lpasswordRef.touched)">Please Enter Password</div>
+            <div>
+              <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-default submit">Login</button>
+              <a class="reset_pass" href="/forgot-password/">Lost your password?</a>
+            </div>
+
+             <div class="alert {{class}}" role="alert" align="center"  *ngIf="message">{{message}}</div>
+
+            <div class="clearfix"></div>
+
+            <div class="separator">
+              <div class="clearfix"></div>
+              <br />
+              <div>
+                <h1><i class='fas fa-clinic-medical'></i> Clinic Admin App!</h1>
+                <p>©2019 All Rights Reserved. Crescentek</p>
+              </div>
+            </div>
+          </form>
+
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

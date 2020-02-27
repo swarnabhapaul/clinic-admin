@@ -1,0 +1,121 @@
+<div class="">
+    <div class="container body">
+      <div class="main_container">
+
+        <app-sidebar></app-sidebar>
+
+        <!-- top navigation -->
+        <app-header></app-header>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Appoinment Management</h3>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Appoinment <small>List</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table class="table_part table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>PRN</th>
+                          <th>Assigen Doctor</th>
+                          <th>Assigen Patient</th>
+                          <th>Appoinment Date</th>
+                          <th>Appoinment Time</th>
+                          <!-- <th>Body Vitals</th> -->
+                          <th>App Token</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr *ngFor="let appoinmentlist of appoinmentlists let i=index">
+                          <td>{{appoinmentlist.prn}}</td>
+                          <td>{{appoinmentlist.doctordetails.first_name}} {{appoinmentlist.doctordetails.last_name}}</td>
+                          <td>{{appoinmentlist.receptionistdetails.first_name}} {{appoinmentlist.receptionistdetails.last_name}}</td>
+                          <td>{{appoinmentlist.appointment_date  | date:'dd-MM-yyyy'}}</td>
+                          <td>{{appoinmentlist.appointment_time}}</td>
+                          <!-- <td>
+                          	<table class="">
+              							  <thead>
+              							    <tr>
+              							      <th scope="col">Height</th>
+              							      <th scope="col">Weight</th>
+              							      <th scope="col">Blood Pressure</th>
+              							    </tr>
+              							  </thead>
+              							  <tbody>
+              							    <tr>
+              							      <td>{{appoinmentlist.height}}</td>
+              							      <td>{{appoinmentlist.weight}}</td>
+              							      <td>{{appoinmentlist.blood_pressure}}</td>
+              							    </tr>
+              							  </tbody>
+              							</table>
+                          </td> -->
+                          <td>{{appoinmentlist.app_token}}</td>
+                          <td>{{appoinmentlist.status}}</td>
+                          <td>
+                            <a href="/patient-edit/{{appoinmentlist._id}}" class="btn btn-info btn-sm">Edit
+                            </a>
+                            <!-- ================= View Prescription ================= -->
+                            <a href="/prescription/{{appoinmentlist._id}}" *ngIf="appoinmentlist.is_prescription == 1" target="_blank" class="btn btn-info btn-sm"> View Prescription
+                            </a>
+                            <!-- ================= View Report ================= -->
+                            <a href="/report-upload/{{appoinmentlist._id}}" *ngIf="appoinmentlist.is_prescription == 1" target="_blank" class="btn btn-info btn-sm"> Manage Report
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+        <!-- <div id="reportModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button"  (click)="closeModal()" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+              </div>
+              <div class="modal-body">
+                <p id="app_id"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button"  (click)="closeModal()" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div> -->
+
+        <!-- footer content -->
+        <app-footer></app-footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+</div>

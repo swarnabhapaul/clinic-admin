@@ -1,0 +1,158 @@
+<div class="">
+    <div class="container body">
+      <div class="main_container">
+
+        <app-sidebar></app-sidebar>
+
+        <!-- top navigation -->
+        <app-header></app-header>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Clinic <small>add</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <form class="form-horizontal form-label-left" #clinicForm="ngForm" (ngSubmit)="clinicAdd(clinicForm)">
+
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="clinic_name">Clinic Name <span class="required">*</span></label>
+						    <div class="col-md-6 col-sm-6 col-xs-12">
+						      <input 
+						      type="text" 
+						      placeholder="Clinic Name" 
+						      name="clinic_name" 
+						      class="form-control col-md-7 col-xs-12" 
+						      required="required"
+						      #clinic_nameRef="ngModel"
+						      ngModel
+						      >
+						    </div>
+							<div class="text-danger" *ngIf="(clinicForm.submitted && clinic_nameRef.errors) || (clinic_nameRef.invalid && clinic_nameRef.touched)">Please Enter Clinic Name</div> 
+						</div>
+
+						<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_name">User Name <span class="required">*</span></label>
+						    <div class="col-md-6 col-sm-6 col-xs-12">
+						      <input 
+						      type="text" 
+						      name="user_name" 
+						      placeholder="User Name" 
+						      class="form-control col-md-7 col-xs-12" 
+						      required="required"
+						      #user_nameRef="ngModel"
+						      ngModel
+						      >
+						    </div>
+							<div class="text-danger" *ngIf="(clinicForm.submitted && user_nameRef.errors) || (user_nameRef.invalid && user_nameRef.touched)">Please Enter User Name</div> 
+						</div>
+
+						<div class="item form-group">
+						    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email_id">Email <span class="required">*</span>
+						    </label>
+						    <div class="col-md-6 col-sm-6 col-xs-12">
+						      <input 
+						      type="text" 
+						      name="email_id" 
+						      placeholder="Email" 
+						      class="form-control col-md-7 col-xs-12" 
+						      required="required"
+						      #email_idRef="ngModel"
+						      ngModel
+						      >
+						    </div>
+							<div class="text-danger" *ngIf="(clinicForm.submitted && email_idRef.errors) || (email_idRef.invalid && email_idRef.touched)">Please Enter Email</div> 
+						</div>
+
+						<div class="item form-group">
+						    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Password <span class="required">*</span>
+						    </label>
+						    <div class="col-md-6 col-sm-6 col-xs-12">
+						      <input 
+						      type="text" 
+						      name="password" 
+						      placeholder="Password" 
+						      class="form-control col-md-7 col-xs-12" 
+						      required="required"
+						      #passwordRef="ngModel"
+						      ngModel
+						      >
+						    </div>
+							<div class="text-danger" *ngIf="(clinicForm.submitted && passwordRef.errors) || (passwordRef.invalid && passwordRef.touched)">Please Enter Password</div>
+						</div>
+
+						<div class="item form-group">
+						    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Phone Number <span class="required">*</span>
+						    </label>
+						    <div class="col-md-6 col-sm-6 col-xs-12">
+						      <input 
+						      type="text" 
+						      name="phone_no" 
+						      placeholder="Phone Number " 
+						      class="form-control col-md-7 col-xs-12" 
+						      required="required"
+						      #phone_noRef="ngModel"
+						      ngModel
+						      >
+						    </div>
+							<div class="text-danger" *ngIf="(clinicForm.submitted && phone_noRef.errors) || (phone_noRef.invalid && phone_noRef.touched)">Please Enter Phone Number</div>
+						</div>
+
+						<div class="item form-group">
+						    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Address <span class="required">*</span>
+						    </label>
+						    <div class="col-md-6 col-sm-6 col-xs-12">
+						      <input 
+						      type="text" 
+						      name="address" 
+						      placeholder="Address" 
+						      class="form-control col-md-7 col-xs-12" 
+						      required="required"
+						      #addressRef="ngModel"
+						      ngModel
+						      >
+						    </div>
+							<div class="text-danger" *ngIf="(clinicForm.submitted && addressRef.errors) || (addressRef.invalid && addressRef.touched)">Please Enter Address</div>
+						</div>
+
+
+						<div class="ln_solid"></div>
+						<div class="form-group">
+						<div class="col-md-6 col-md-offset-3">
+						  <button type="submit" class="btn btn-primary">Cancel</button>
+						  <button id="send" type="submit" class="btn btn-success">Submit</button>
+						</div>
+						</div>
+
+                    </form>
+
+                    <div class="alert {{class}}" role="alert" id="doc_message" align="center"  *ngIf="message">{{message}}</div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <app-footer></app-footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+</div>

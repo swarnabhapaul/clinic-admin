@@ -1,0 +1,127 @@
+<div class="">
+    <div class="container body">
+      <div class="main_container">
+
+        <app-sidebar></app-sidebar>
+        <!-- top navigation -->
+        <app-header></app-header>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="row top_tiles">
+
+
+              <!-- ========================== Modal =========================== -->
+              <!-- style="display: block; padding-left: 17px;" -->
+                <div class="modal  {{role == 'superadmin' && clinic_email_id == null ?'openmodal':'fade'}} "  >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Chosse a Clinic</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let cliniclist of cliniclists">
+                                 <div class="tile-stats">
+                                  <p (click)="getclinicbyid(cliniclist._id)">  
+                                    {{cliniclist.clinic_name}}
+                                  </p>
+                                </div>
+                            </div>
+                          <div class="clearfix"></div>
+                        </div> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <!-- ========================== Modal =========================== -->
+
+              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-user-md"></i></div>
+                  <div class="count">
+                    {{(totalresepsinist!=null) ? totalresepsinist : '0'}}
+                  </div>
+                  <h3>Receptionsts</h3>
+                  <p>Total registered </p>
+                </div>
+              </div>
+              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-stethoscope"></i></div>
+                  <div class="count">
+                    {{(totaldoctor!=null) ? totaldoctor : '0'}}
+                  </div>
+                  <h3>Doctors</h3>
+                  <p>Total registered </p>
+                </div>
+              </div>
+              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-wheelchair"></i></div>
+                  <div class="count">
+                    {{(totalpatient!=null) ? totalpatient : '0'}}
+                  </div>
+                  <h3>Patient</h3>
+                  <p>Total registered </p>
+                </div>
+              </div>
+              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-smile-o" aria-hidden="true"></i></div>
+                  <div class="count">
+                    {{(happyclient!=null) ? happyclient : '0'}}
+                  </div>
+                  <h3>Happy Client </h3>
+                  <p>Total Client </p>
+                </div>
+              </div>
+              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-users"></i></div>
+                  <div class="count">
+                    {{(totalappo!=null) ? totalappo : '0'}}
+                  </div>
+                  <h3>Total Appoinment</h3>
+                  <p>Appoinment </p>
+                </div>
+              </div>
+              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                  <div class="count">
+                    {{(todaysappo!=null) ? todaysappo : '0'}}
+                  </div>
+                  <h3>Today's Appoinment</h3>
+                  <p>Appoinment </p>
+                </div>
+              </div>
+              
+              <div class="animated flipInY col-lg-12 col-md-12 col-sm-12 col-xs-12 {{role == 'superadmin'?'show-menu':'hide-menu'}}">
+                <div class="tile-stats tile_states_2">
+                  <h4>Want to change Clinic</h4>
+                  <div *ngFor="let cliniclist of cliniclists" class="col-lg-3 col-md-3 col-sm-6 col-xs-12 border_box_active {{clinic_id == cliniclist._id?'active':''}}" (click)="getclinicbyid(cliniclist._id)">
+                    <p class="">
+                      {{cliniclist.clinic_name}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+
+          
+
+        <!-- footer content -->
+        <app-footer></app-footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+</div>

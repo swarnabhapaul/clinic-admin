@@ -1,0 +1,129 @@
+ @charset "utf-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+
+
+body { font-family: 'Montserrat', sans-serif !important;}
+
+p { font-size:14px; line-height:26px;}
+
+a { text-decoration:none !important; -mos-transition:0.3s linear; -moz-transition:0.3s linear; -webkit-transition:0.3s linear; transition:0.3s linear;
+}
+h3 {
+	font-size: 20px;
+}
+ul {
+	padding:0;
+}
+
+.prescription {
+	border:1px solid #ddd;
+}
+.sky_stick {
+	width:60%;
+	height:36px;
+	margin-top:20px;
+	background: linear-gradient(to left, transparent 0%, #0b7de2 57%);
+}
+.prescription_text {
+	padding:36px;
+}
+.header_top {
+	margin:10px 0 24px;
+}
+.header_top h4 {
+	font-size:24px;
+	padding-bottom:6px;
+	color:#0b7de2;
+}
+.header_top h5 {
+	font-size:15px;
+}
+.patient_details p {
+	margin-bottom:0;
+	color:#444;
+	font-weight:500;
+}
+.value_name p {
+	line-height:4px;
+}
+.list_label {
+	margin:10px 0;
+}
+.report_details {
+	padding:50px 0;
+}
+.patient_details {
+    border-bottom: 5px solid #0b7de2;
+    padding-bottom: 30px;
+}
+.patient_report  h4 {
+	line-height:55px;
+	font-size:20px;
+}
+.patient_report a {
+	border-radius: 30px;
+	background: #fff;
+	box-shadow: 0 4px 6px 0px #e6e6e6;
+	padding: 9px 30px;
+	color: #585b5e !important;
+	margin-right:15px;
+}
+a.add {
+	background: none !important;
+
+	color: #0b7de2 !important;
+	
+	display: block;
+	
+	width: 124px;
+	
+	box-shadow: none;
+	
+	font-weight: 600;
+	
+	font-size: 16px;
+	
+	margin-top: 30px;
+	
+	border: 1px solid #dbdbdb;
+	
+	border-radius: 10px;
+}
+a.add i {
+	padding-left:10px;
+}
+.patient_report label {
+	margin-top:25px;
+	font-weight:500;
+}
+.patient_report  {
+	padding:8px 0;
+}
+.patient_report:last-child {
+	border-bottom:0;
+}
+
+.medicine p {
+	font-size:15px;
+}
+.patient_report table {
+	font-size:14px;
+}
+
+
+.footer_inner p {
+	margin-bottom:0;
+	color:#000;
+	line-height:36px;
+}
+.footer_inner {
+	padding:50px 0 30px;
+	border-bottom:12px solid #0b7de2;
+}
+.footer_inner h5 {
+	font-size:16px;
+}
+h4.sky_text {
+	color:#0b7de2;
+}

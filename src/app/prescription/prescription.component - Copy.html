@@ -1,0 +1,105 @@
+<div class="">
+    <div class="container body">
+      <div class="main_container">
+
+        <app-sidebar></app-sidebar>
+
+        <!-- top navigation -->
+        <app-header></app-header>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Prescription</h3>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>{{prescriptionlists.prn}}</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li>
+                      	<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li>
+                      	<a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                      	<button onclick="myFunction()" class="btn btn-info">Print Prescription</button>
+                      <li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+
+
+                  	<div class="col-md-6 col-sm-6 col-xs-6">
+						<!-- 
+                  		<h5>Patient Name: </h5>{{prescriptionlists.patientdetails.first_name}} {{prescriptionlists.patientdetails.last_name}}
+                  		<h5>Email: </h5>{{prescriptionlists.patientdetails.email_id}}
+                  		<h5>Phone number: </h5>{{prescriptionlists.patientdetails.phone_no}}
+                  		<h5>DOB: </h5>{{prescriptionlists.patientdetails.date_of_birth}}
+                  		<h5>Gender: </h5>{{prescriptionlists.patientdetails.gender}}
+                  		<h5>Address: </h5>{{prescriptionlists.patientdetails.first_name}}
+                  		-->
+						 
+
+
+                  		<div class="clearfix"></div>
+	                  	
+	                  	<h2>Diagnosis</h2>
+	                  	<ul>
+	                  		<li *ngFor="let diagnosis of prescriptionlists.prescription.diagnosis">Diagnosis Description : {{diagnosis.diagnosis_description}}
+	                  		</li>
+	                  	</ul>
+
+	                  	<h2>Investigation</h2>
+	                  	<ul>
+	                  		<li *ngFor="let investigation of prescriptionlists.prescription.investigation"> 
+	                  			{{investigation.test_description}}
+	                  		</li>
+	                  	</ul>
+
+	                  	<h2>medicine</h2>
+	                  	<ul>
+	                  		<li *ngFor="let medicine of prescriptionlists.prescription.medicine"> 
+	                  			Medicine: {{medicine.medicine_name}} {{medicine.medicine_power}} ({{medicine.medicine_dosage}})
+	                  		</li>
+	                  	</ul>
+
+
+	                  	<h2>Diagnosis</h2>
+	                  	<ul>
+	                  		<li *ngFor="let diagnosis of prescriptionlists.prescription.diagnosis">		Diagnosis Description : {{diagnosis.diagnosis_description}}
+	                  		</li>
+	                  	</ul>
+
+	                  	<h2>Remarks: </h2>{{prescriptionlists.prescription.remarks}}
+	                </div>  
+	                <div class="col-md-6 col-sm-6 col-xs-6">
+	                	<h2>Body Vitals</h2>
+	                  	<ul>
+	                  		<li>Height : {{prescriptionlists.height}}</li>
+          							<li>Weight : {{prescriptionlists.weight}}</li>
+          							<li>Blood Pressure : {{prescriptionlists.blood_pressure}}</li>
+	                  	</ul>
+	                </div>	
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+        
+        <!-- footer content -->
+        <app-footer></app-footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+</div>

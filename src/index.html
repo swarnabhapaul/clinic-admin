@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<!-- Meta, title, CSS, favicons, etc. -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Clinic Admin App</title>
+		<base href="/">
+		<!-- Bootstrap -->
+		<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+		<link  rel="stylesheet" type="text/css" href="/assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/assets/css/nprogress.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/assets/css/custom.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/assets/css/custom.css" rel="stylesheet">
+
+		<!-- ========================= Prescription ========================== -->
+		 <link href="/assets/css/prescription.css" rel="stylesheet" type="text/css">
+		<!--<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-grid.min.css"/> 
+     	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"/>-->
+		<!-- ========================= Prescription ========================== -->
+
+	    <!-- For Datatables End -->
+	</head>
+
+  	<body class="nav-md footer_fixed"><!--  -->
+  		<app-root></app-root>
+
+  		<!-- =========================== Prescription ============================ -->
+	    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+  		<script src="/assets/js/jquery.min.js"></script>
+	    <!-- Bootstrap -->
+	    <script src="/assets/js/bootstrap.min.js"></script>
+	    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	    <script type="text/javascript">
+	    	$(document).ready( function () {
+
+				$(".right_col").css('min-height', '1000px');
+					/*$(".right_col").css('min-height', $(window).height());
+					alert($(window).height();
+					*/
+	    		setTimeout(function(){ 
+	    			$('.table_part').DataTable();
+	    		}, 2000);
+
+	    		$("#menu_toggle").click(function(){
+	    			var sm = $("body").hasClass("nav-sm");
+				    if(sm){
+						$("body").removeClass("nav-sm").toggleClass("nav-md");
+				    }else{
+						$("body").removeClass("nav-md").toggleClass("nav-sm");
+				    }
+	    		});
+
+	    		//
+	    		$(".side-menu > li").click(function(){
+	    			$(".side-menu > li").removeClass('active');
+	    			var active = $(".side-menu > li").hasClass("active");
+	    			if (active) {
+	    				$(this).removeClass('active');
+	    			} else{
+	    				$(this).addClass('active');
+	    			}
+	    			
+	    		});
+
+	    		
+
+			} );
+
+			$(document).ready(function() {
+				var max_fields      = 10; //maximum input boxes allowed
+				var wrapper   		= $(".input_fields_wrap"); //Fields wrapper
+				var add_button      = $(".add_field_button"); //Add button ID
+				
+				var x = 1; //initlal text box count
+				$(add_button).click(function(e){ //on add input button click
+					e.preventDefault();
+					if(x < max_fields){ //max input box allowed
+						x++; //text box increment
+						$(wrapper).append('<form class="form-horizontal form-label-left" #reportForm="ngForm" (ngSubmit)="reportAdd(reportForm)"><div class="form-group col-md-6 col-sm-6 col-xs-12"><div class="item"><div class="col-md-6 col-sm-6 col-xs-12"><input class="form-control col-md-7 col-xs-12" name="add_report" required="required" type="file" #add_report="ngModel" ngModel accept="image/*" (change)="handleInputChange($event)" ></div></div></div><div class="form-group col-md-6 col-sm-6 col-xs-12"><div class="col-md-6 col-md-offset-3"><button id="send" type="submit" class="btn btn-success">Upload</button></div></div></form>').bind(); //add input box
+					}
+				});
+				
+				$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+					e.preventDefault(); $(this).parent('div').remove(); x--;
+				})
+			});
+
+			function myFunction() {
+			  window.print();
+			}
+			
+	    </script>
+	   
+	    <!-- Custom Theme Scripts -->
+	    <script src="/assets/js/fastclick.js"></script>
+	    <script src="/assets/js/nprogress.js"></script>	
+	    <script src="/assets/js/custom.min.js"></script>
+	</body>
+</html>

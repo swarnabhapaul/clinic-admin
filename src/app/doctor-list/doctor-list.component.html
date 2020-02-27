@@ -1,0 +1,94 @@
+<div class="">
+    <div class="container body">
+      <div class="main_container">
+
+        <app-sidebar></app-sidebar>
+
+        <!-- top navigation -->
+        <app-header></app-header>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Doctor Management</h3>
+                
+              </div>
+
+              <div class="title_right {{role == 'receptionist'?'hide-menu':'show-menu'}}">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search" style="margin: 0px 0 ;">
+                  <div class="input-group">
+                    <a href="/doctor-add">
+                      <button class="btn btn-warning">Doctor Add</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Doctor <small>List</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table class="table_part table table-striped table-bordered" *ngIf="doctorlists">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Phone Number</th>
+                          <th>Degree</th>
+                          <th>Specialization</th>
+                          <th>Experience</th>
+                          <th>Reg_no</th>
+                          <th>Address</th>
+                          <th class="{{role == 'receptionist'?'hide-menu':'show-menu'}}">Action</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr *ngFor="let doctorlist of doctorlists">
+            							<td>	
+            							{{doctorlist.first_name}} {{doctorlist.last_name}}</td>
+            							<td>{{doctorlist.email_id}}</td>
+            							<td>{{doctorlist.phone_no}}</td>
+            							<td>{{doctorlist.degree}}</td>
+            							<td>{{doctorlist.specialization}}</td>
+            							<td>{{doctorlist.experience}}</td>
+            							<td>{{doctorlist.reg_no}}</td>
+            							<td>{{doctorlist.address}}</td>
+            							<td class="{{role == 'receptionist'?'hide-menu':'show-menu'}}">
+            								<a href="/doctor-edit/{{doctorlist._id}}" class="btn btn-info btn-sm ">Edit
+            								</a>
+            							</td>
+                      	</tr>
+                      </tbody>
+
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <app-footer></app-footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+</div>

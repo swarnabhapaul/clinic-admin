@@ -1,0 +1,112 @@
+<div class="col-md-3 left_col">
+  <div class="left_col scroll-view sideBar_wrap">
+    <div class="navbar sideBar_title">
+      <div class="media">
+        <div class="media-left">
+          <div class="dash_icon profile_img">
+            <a href="/">
+              <img src="{{pfimage}}" alt="profile_img" class="sideBar_logo">
+            </a>
+          </div>
+        </div>
+        <div class="media-body media-middle">
+          <h5>Clinic Admin App</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+      <div class="menu_section">
+        <h3>General</h3>
+        <ul class="nav side-menu">
+          <!-- <li>
+            <a href="/dashboard" class="{{activeurl === 'dashboard'?'active':''}}" >
+              <i class="fa fa-tasks"></i> Dashboard <span class="fa fa-chevron-right"></span>
+            </a>
+          </li> -->
+
+          <li  class="{{activeurl === 'dashboard'?'active':''}}">
+            <a href="/dashboard">
+              <i class="fa fa-tasks"></i> Dashboard <span class="fa fa-chevron-right"></span>
+            </a>
+          </li>
+
+          <!--  -->
+          <li class="{{activeurl === 'receptionst-add'?'active':'' || activeurl === 'receptionst-list'?'active':'' || role === 'receptionist'?'hide-menu':'show-menu'}}" >
+            <a><i class="fa fa-tasks"></i> Manage Receptionist <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="/receptionst-add"> Receptionist Add</a></li>
+              <li><a href="/receptionst-list"> Receptionist List</a></li>
+            </ul>
+          </li>
+
+          <li class="{{role !== 'superadmin'?'hide-menu':'show-menu' }} {{activeurl === 'clinic-add'?'active':'' || activeurl === 'clinic-list'?'active':'' }}"  >
+            <a><i class="fa fa-tasks"></i> Manage Clinic <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="/clinic-add"> Clinic Add</a></li>
+              <li><a href="/clinic-list"> Clinic List</a></li>
+            </ul>
+          </li>
+
+
+          <li class="{{activeurl === 'doctor-add'?'active':'' || activeurl === 'doctor-list'?'active':'' }}">
+            <a><i class="fa fa-tasks"></i> Manage Doctor <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li class="{{role == 'receptionist'?'hide-menu':'show-menu'}}"><a href="/doctor-add"> Doctor Add</a></li>
+              <li><a href="/doctor-list"> Doctor List</a></li>
+            </ul>
+          </li>
+
+          <li class="{{activeurl === 'patient-add'?'active':'' || activeurl === 'patient-list'?'active':'' }}">
+            <a><i class="fa fa-tasks"></i> Manage Patient <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="/patient-add"> Patient Add</a></li>
+              <li><a href="/patient-list"> Patient List</a></li>
+            </ul>
+          </li>
+
+          <li class="{{activeurl === 'appoinment-list'?'active':''}}">
+            <a><i class="fa fa-tasks"></i> Manage Appoinment <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="/appoinment-add"> Appoinment Add</a></li>
+            </ul>
+            <ul class="nav child_menu">
+              <li><a href="/appoinment-list"> Appoinment List</a></li>
+            </ul>
+          </li>
+         
+          <li  class="{{activeurl === 'clinic-profile'?'active':'' || role == 'clinic'?'show-menu':'hide-menu'}}">
+            <a href="/clinic-profile">
+              <i class="fa fa-tasks"></i> Profile Update <span class="fa fa-chevron-right"></span>
+            </a>
+          </li>
+
+          <li  class="{{activeurl === 'receptionist-profile'?'active':'' || role == 'receptionist'?'show-menu':'hide-menu'}}">
+            <a href="/receptionist-profile">
+              <i class="fa fa-tasks"></i> Profile Update <span class="fa fa-chevron-right"></span>
+            </a>
+          </li>
+
+          <li class="{{activeurl === 'superadmin-profile'?'active':'' || role == 'superadmin'?'show-menu':'hide-menu'}}">
+            <a href="/superadmin-profile}}">
+              <i class="fa fa-tasks"></i> Profile Update <span class="fa fa-chevron-right"></span>
+            </a>
+          </li>
+
+
+          <li>
+            <a (click)="logout()">
+              <i class="fa fa-tasks"></i> Logout <span class="fa fa-chevron-right"></span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <!-- /sidebar menu -->
+
+  </div>
+</div>

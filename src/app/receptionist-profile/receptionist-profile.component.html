@@ -1,0 +1,202 @@
+<div class="">
+    <div class="container body">
+      <div class="main_container">
+
+        <app-sidebar></app-sidebar>
+
+        <!-- top navigation -->
+        <app-header></app-header>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Receptionist <small>Profile Edit</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <!-- Start profile image -->
+                    <div class="uProf_pic">                      
+                      <div class="card" >
+                        <div class="box" id="profImg_upl2"> 
+                          <img src="{{profileimage}}">
+                        </div>
+                        <div class="btn">
+                          {{flag == '1'?'Update':'Change'}}
+                          <input type='file' id="profImg_Inp2" (change)="handleInputChange($event)"/>
+                        </div>
+                      </div>
+                      <label class="alert {{profileclass}}" *ngIf="profilemessage" role="alert" id="doc_message" align="center" >{{profilemessage}}</label>
+                    </div>
+                    <!-- End profile image -->
+
+                    <form class="form-horizontal form-label-left" #receptionstForm="ngForm" (ngSubmit)="receptionstEdit(receptionstForm)">
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">First Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          class="form-control col-md-7 col-xs-12" 
+                          name="first_name" 
+                          placeholder="First e.g Jon" 
+                          required="required" 
+                          type="text"
+                          #first_nameRef="ngModel"
+                          ngModel={{receptionstbyid.first_name}}
+                          >
+                          <div class="text-danger" *ngIf="(receptionstForm.submitted && first_nameRef.errors) || (first_nameRef.invalid && first_nameRef.touched)">Please Enter First Name</div>
+                        </div>
+
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last_name">Last Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          class="form-control col-md-7 col-xs-12" 
+                          name="last_name" 
+                          placeholder="Last e.g Deo" 
+                          required="required" 
+                          type="text"
+                          #last_nameRef="ngModel"
+                          ngModel={{receptionstbyid.last_name}}
+                          >
+                          <div class="text-danger" *ngIf="(receptionstForm.submitted && last_nameRef.errors) || (last_nameRef.invalid && last_nameRef.touched)">Please Enter Last Name</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender"> Gender <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select 
+                          class="form-control col-md-7 col-xs-12" 
+                          name="gender"
+                          type="text"
+                          #genderRef="ngModel"
+                          ngModel={{receptionstbyid.gender}}
+                          >
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                          </select>
+                          <div class="text-danger" *ngIf="(receptionstForm.submitted && genderRef.errors) || (genderRef.invalid && genderRef.touched)">Please Enter Gender</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="email"
+                          name="email_id" 
+                          required="required" 
+                          class="form-control col-md-7 col-xs-12"
+                          #email_idRef="ngModel"
+                          ngModel={{receptionstbyid.email_id}}
+                          >
+                        </div>
+                        <div class="text-danger" *ngIf="(receptionstForm.submitted && email_idRef.errors) || (email_idRef.invalid && email_idRef.touched)">Please Enter Email</div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Phone Number <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="text"
+                          name="phone_no" 
+                          required="required" 
+                          class="form-control col-md-7 col-xs-12"
+                          #phone_noRef="ngModel"
+                          ngModel={{receptionstbyid.phone_no}}
+                          >
+                          <div class="text-danger" *ngIf="(receptionstForm.submitted && phone_noRef.errors) || (phone_noRef.invalid && phone_noRef.touched)">Please Enter Phone Number</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_name">User Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          readonly 
+                          class="form-control col-md-7 col-xs-12"
+                          name="user_name" 
+                          placeholder="User e.g Jondeo123" 
+                          required="required" 
+                          type="text"
+                          #user_nameRef="ngModel"
+                          ngModel={{receptionstbyid.user_name}}
+                          >
+                          <div class="text-danger" *ngIf="(receptionstForm.submitted && user_nameRef.errors) || (user_nameRef.invalid && user_nameRef.touched)">Please Enter User Name</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">password <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input
+                          class="form-control col-md-7 col-xs-12"
+                          name="password"
+                          type="text"
+                          #passwordRef="ngModel"
+                          ngModel
+                          >
+                        </div>
+                        <div class="text-danger" *ngIf="(receptionstForm.submitted && passwordRef.errors) || (passwordRef.invalid && passwordRef.touched)">Please Enter Password</div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address"> Address <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea
+                          name="address" 
+                          required="required" 
+                          class="form-control col-md-7 col-xs-12"
+                          #addressRef="ngModel"
+                          ngModel={{receptionstbyid.address}}
+                          >{{receptionstbyid.address}}</textarea>
+                          <div class="text-danger" *ngIf="(receptionstForm.submitted && addressRef.errors) || (addressRef.invalid && addressRef.touched)">Please Enter Address</div>
+                        </div>
+                      </div>
+
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="alert {{class}}" role="alert" id="doc_message" align="center"  *ngIf="message">{{message}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <app-footer></app-footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+</div>

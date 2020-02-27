@@ -1,0 +1,276 @@
+<div class="">
+    <div class="container body">
+      <div class="main_container">
+
+        <app-sidebar></app-sidebar>
+
+        <!-- top navigation -->
+        <app-header></app-header>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Doctor <small>add</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <form class="form-horizontal form-label-left" #doctorForm="ngForm" (ngSubmit)="doctorAdd(doctorForm)">
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">First Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          class="form-control col-md-7 col-xs-12" 
+                          name="first_name" 
+                          placeholder="First e.g Jon" 
+                          required="required" 
+                          type="text"
+                          #first_nameRef="ngModel"
+                          ngModel
+                          >
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && first_nameRef.errors) || (first_nameRef.invalid && first_nameRef.touched)">Please Enter First Name</div>
+                        </div>
+
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last_name">Last Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          class="form-control col-md-7 col-xs-12" 
+                          name="last_name" 
+                          placeholder="Last e.g Deo" 
+                          required="required" 
+                          type="text"
+                          #last_nameRef="ngModel"
+                          ngModel
+                          >
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && last_nameRef.errors) || (last_nameRef.invalid && last_nameRef.touched)">Please Enter Last Name</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender"> Gender <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select 
+                          class="form-control col-md-7 col-xs-12" 
+                          name="gender"
+                          type="text"
+                          #genderRef="ngModel"
+                          ngModel
+                          >
+                            <option selected value="male">Male</option>
+                            <option value="female">Female</option>
+                          </select>
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && genderRef.errors) || (genderRef.invalid && genderRef.touched)">Please Enter Gender</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          (keyup)=checkEmail($event)
+                          type="email"
+                          name="email_id" 
+                          required="required" 
+                          class="form-control col-md-7 col-xs-12"
+                          #email_idRef="ngModel"
+                          ngModel
+                          >
+                          <p class="{{doctoremail == '2'?'show':'hide'}}">
+                            Oops email used <i class="fa fa-times" style="color:red"></i>
+                          </p>
+                          <p class="{{doctoremail == '1'?'show':'hide'}}">
+                            Email available <i class="fa fa-check" style="color:green"></i>
+                          </p>
+                          
+                        </div>
+                        <div class="text-danger" *ngIf="(doctorForm.submitted && email_idRef.errors) || (email_idRef.invalid && email_idRef.touched)">Please Enter Email</div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Phone Number <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="text"
+                          name="phone_no" 
+                          required="required" 
+                          class="form-control col-md-7 col-xs-12"
+                          #phone_noRef="ngModel"
+                          ngModel
+                          >
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && phone_noRef.errors) || (phone_noRef.invalid && phone_noRef.touched)">Please Enter Phone Number</div>
+                        </div>
+
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_name">User Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          (keyup)=checkUsername($event)
+                          class="form-control col-md-7 col-xs-12"
+                          name="user_name" 
+                          placeholder="User e.g Jondeo123" 
+                          required="required" 
+                          type="text"
+                          #user_nameRef="ngModel"
+                          ngModel
+                          >
+                          <p class="{{doctorusername == '2'?'show':'hide'}}">
+                            Oops username used <i class="fa fa-times" style="color:red"></i>
+                          </p>
+                          <p class="{{doctorusername == '1'?'show':'hide'}}">
+                            Username available <i class="fa fa-check" style="color:green"></i>
+                          </p>
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && user_nameRef.errors) || (user_nameRef.invalid && user_nameRef.touched)">Please Enter User Name</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label for="password" class="control-label col-md-3">Password</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input  
+                          type="password" 
+                          name="password"
+                          class="form-control col-md-7 col-xs-12"
+                          #passwordRef="ngModel"
+                          ngModel
+                          >
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && passwordRef.errors) || (passwordRef.invalid && passwordRef.touched)">Please Enter Password</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label for="date_of_birth" class="control-label col-md-3">Date Of Birth</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="date" 
+                          name="date_of_birth" 
+                          class="form-control col-md-7 col-xs-12" 
+                          required="required"
+                          #date_of_birthRef="ngModel"
+                          ngModel
+                          >
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && date_of_birthRef.errors) || (date_of_birthRef.invalid && date_of_birthRef.touched)">Please Enter Date Of Birth</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label for="degree" class="control-label col-md-3">Degree</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="text" 
+                          name="degree" 
+                          class="form-control col-md-7 col-xs-12" 
+                          required="required"
+                          #degreeRef="ngModel"
+                          ngModel
+                          >
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && degreeRef.errors) || (degreeRef.invalid && degreeRef.touched)">Please Enter Degree</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label for="specialization" class="control-label col-md-3">Specialization</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="text" 
+                          name="specialization" 
+                          class="form-control col-md-7 col-xs-12" 
+                          required="required"
+                          #specializationRef="ngModel"
+                          ngModel
+                          >
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && specializationRef.errors) || (specializationRef.invalid && specializationRef.touched)">Please Enter Specialization</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label for="experience" class="control-label col-md-3">Experience</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="text" 
+                          name="experience" 
+                          class="form-control col-md-7 col-xs-12" 
+                          required="required"
+                          #experienceRef="ngModel"
+                          ngModel
+                          >
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && experienceRef.errors) || (experienceRef.invalid && experienceRef.touched)">Please Enter Experience</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label for="reg_no" class="control-label col-md-3">Doctor Registration Number</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="text" 
+                          name="reg_no" 
+                          class="form-control col-md-7 col-xs-12" 
+                          required="required"
+                          #reg_noRef="ngModel"
+                          ngModel
+                          >
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && reg_noRef.errors) || (reg_noRef.invalid && reg_noRef.touched)">Please Enter Registration Number</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address"> Address <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="address" 
+                          required="required" 
+                          name="address" 
+                          class="form-control col-md-7 col-xs-12"
+                          #addressRef="ngModel"
+                          ngModel
+                          ></textarea>
+                          <div class="text-danger" *ngIf="(doctorForm.submitted && addressRef.errors) || (addressRef.invalid && addressRef.touched)">Please Enter Address</div>
+                        </div>
+                      </div>
+
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit"  class="btn btn-primary">Cancel</button>
+                          <button id="send" [disabled]="doctorusername == '2' || doctoremail == '2'" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="alert {{class}}" role="alert" id="doc_message" align="center"  *ngIf="message">{{message}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <app-footer></app-footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+.for_bg_pres {
+	background:#fff !important;
+}
+.for_bg_pres .container {
+	width: 1140px;
+	margin: 0 auto;
+}
+.patient_report h4 {
+	color: #000;
+}
+.header_top h5 {
+	color:#313131;
+}
+
+p {
+	color:#313131;
+}
+.patient_report table {
+	border: 0 !important;
+}
+.patient_report table thead th {
+	color: #000;
+	font-weight: bold;
+	border-bottom: 0;
+}
+.patient_report table tbody tr td {
+	color:#313131;
+	border-top: 0;
+}
+.patient_report label {
+	color:#313131;
+	font-size: 15px;
+}
+.footer_inner h5 {
+	color:#313131;
+}
+h4.patient_name {
+	font-weight: bold;
+}
+.prescription_text table thead th {
+	border-bottom: 0;
+}
+.prescription_text table tr td {
+	border-top: 0;
+	border-bottom: 0;
+}
+.report_details {
+    padding: 0 0 0;
+}
+.footer_inner {
+	 padding: 20px 0 18px;
+}
+.patient_report table {
+	margin-bottom: 0;
+
+}
+span.designation {
+	display: inline-block;
+}
+.prescription_text h4, h5, h6 {
+	margin-bottom: 0;
+	margin-top:0;
+}
+.list_label {
+	margin:0;
+}
+.list_label p {
+	margin-bottom: 0;
+}
+.header_top h4 {
+	padding-bottom: 0;
+}
+.patient_report textarea {
+	height: 120px !important;
+}
+.patient_details p {
+	line-height: 15px;
+}
+p.bold_p {
+	font-weight: bold;
+}
+.header_top p {
+	margin-bottom: 0;
+}

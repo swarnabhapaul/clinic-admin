@@ -1,0 +1,451 @@
+<div class="">
+    <div class="container body">
+      <div class="main_container">
+
+        <app-sidebar></app-sidebar>
+
+        <!-- top navigation -->
+        <app-header></app-header>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Appointment <small>add</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <form class="form-horizontal form-label-left" #appoinmentForm="ngForm" (ngSubmit)="appoinmentAdd(appoinmentForm)">
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Receptionist">Receptionist <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select
+                          class="form-control col-md-7 col-xs-12" 
+                          name="receplist"
+                          required="required"
+                          #receplistRef="ngModel"
+                          ngModel
+                          >
+                            <option *ngFor="let receptionistlist of receptionistlists" value="{{receptionistlist._id}}">{{receptionistlist.first_name}} {{receptionistlist.last_name}}</option>
+                          </select>
+                        </div>
+                        <div class="text-danger" *ngIf="(appoinmentForm.submitted && receplistRef.errors) || (receplistRef.invalid && receplistRef.touched)">Please Enter Receptionist</div>  
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prnlist">PRN <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select
+                          class="form-control col-md-7 col-xs-12" 
+                          name="prnlist"
+                          required="required"
+                          #prnlistRef="ngModel"
+                          ngModel
+                          >
+                            <option *ngFor="let patientlist of patientlists" value="{{patientlist.prn}}">{{patientlist.prn}}</option>
+                          </select>
+                        </div>
+                        <div class="text-danger" *ngIf="(appoinmentForm.submitted && prnlistRef.errors) || (prnlistRef.invalid && prnlistRef.touched)">Please Enter PRN</div>  
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="doctor">Doctor <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select
+                          class="form-control col-md-7 col-xs-12" 
+                          name="doctorlist"  
+                          required="required"
+                          #doctorlistRef="ngModel"
+                          ngModel
+                          >
+                            <option *ngFor="let doctorlist of doctorlists" value="{{doctorlist._id}}">{{doctorlist.first_name}} {{doctorlist.last_name}}</option>
+                          </select>
+                        </div>
+                        <div class="text-danger" *ngIf="(appoinmentForm.submitted && doctorlistRef.errors) || (doctorlistRef.invalid && doctorlistRef.touched)">Please Enter Doctor</div>  
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="appointment_date">Appointment Date <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="date" 
+                          name="appointment_date" 
+                          class="form-control col-md-7 col-xs-12" 
+                          required="required"
+                          #appointment_dateRef="ngModel"
+                          ngModel
+                          >
+                        </div>
+                        <div class="text-danger" *ngIf="(appoinmentForm.submitted && appointment_dateRef.errors) || (appointment_dateRef.invalid && appointment_dateRef.touched)">Please Enter Appointment Date</div>  
+                      </div>
+                      
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="appointment_time">Appointment Time <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="time" 
+                          name="appointment_time" 
+                          class="form-control col-md-7 col-xs-12" 
+                          placeholder="02.05 pm" 
+                          required="required"
+                          #appointment_timeRef="ngModel"
+                          ngModel
+                          >
+                        </div>
+                        <div class="text-danger" *ngIf="(appoinmentForm.submitted && appointment_timeRef.errors) || (appointment_timeRef.invalid && appointment_timeRef.touched)">Please Enter Appointment Time</div> 
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="app_token">App Token <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="text" 
+                          name="app_token" 
+                          class="form-control col-md-7 col-xs-12" 
+                          required="required"
+                          readonly 
+                          #app_tokenRef="ngModel"
+                          ngModel="{{ganaretedToken}}"
+                          >
+                        </div>
+                        <div class="text-danger" *ngIf="(appoinmentForm.submitted && app_tokenRef.errors) || (app_tokenRef.invalid && app_tokenRef.touched)">Please Enter App Token</div> 
+                      </div>
+
+                      <!-- <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="status">Status <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select name="status" class="form-control col-md-7 col-xs-12" >
+                            <option value="0">Appointment On</option>
+                            <option value="1">Cancel</option>
+                            <option value="2">Hold</option>
+                          </select>
+                        </div>
+                      </div> -->
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="blood_pressure">Blood Pressure <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="text" 
+                          name="blood_pressure" 
+                          placeholder="50-100" 
+                          class="form-control col-md-7 col-xs-12" 
+                          required="required"
+                          #blood_pressureRef="ngModel"
+                          ngModel
+                          >
+                        </div>
+                        <div class="text-danger" *ngIf="(appoinmentForm.submitted && blood_pressureRef.errors) || (blood_pressureRef.invalid && blood_pressureRef.touched)">Please Enter Blood Pressure</div> 
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="weight">Weight <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="text" 
+                          name="weight" 
+                          placeholder="50" 
+                          class="form-control col-md-7 col-xs-12" 
+                          required="required"
+                          #weightRef="ngModel"
+                          ngModel
+                          >
+                        </div>
+                        <div class="text-danger" *ngIf="(appoinmentForm.submitted && weightRef.errors) || (weightRef.invalid && weightRef.touched)">Please Enter Weight</div> 
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="height">Height <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input 
+                          type="text" 
+                          name="height" 
+                          placeholder="5.5" 
+                          class="form-control col-md-7 col-xs-12" 
+                          required="required"
+                          #heightRef="ngModel"
+                          ngModel
+                          >
+                        </div>
+                        <div class="text-danger" *ngIf="(appoinmentForm.submitted && heightRef.errors) || (heightRef.invalid && heightRef.touched)">Please Enter Height</div>
+                      </div>
+
+
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+
+                    </form> 
+
+
+                    <!-- <form class="form-horizontal form-label-left" #appoinmentForm="ngForm" (ngSubmit)="patientAdd(appoinmentForm)">
+
+                      <div class="item form-group">
+                        <button type="button" class="align-middle btn btn-info">
+                          Existing Patient
+                        </button>
+                        <button type="button" class="align-middle btn btn-warning">
+                          New Patient
+                        </button>
+                      </div>
+
+                      <div class="newpatient" style="display: none;">
+                          <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prn">PRN <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input 
+                              class="form-control col-md-7 col-xs-12" 
+                              name="prn" 
+                              placeholder="PRN-003" 
+                              required="required" 
+                              type="text"
+                              #prnRef="ngModel"
+                              ngModel
+                              >
+                              <div class="text-danger" *ngIf="(appoinmentForm.submitted && prnRef.errors) || (prnRef.invalid && prnRef.touched)">Please Enter PRN</div>
+                            </div>
+                          </div>
+
+                          <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">First Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input 
+                              class="form-control col-md-7 col-xs-12" 
+                              name="first_name" 
+                              placeholder="First e.g Jon" 
+                              required="required" 
+                              type="text"
+                              #first_nameRef="ngModel"
+                              ngModel
+                              >
+                              <div class="text-danger" *ngIf="(appoinmentForm.submitted && first_nameRef.errors) || (first_nameRef.invalid && first_nameRef.touched)">Please Enter First Name</div>
+                            </div>
+                          </div>
+
+                          <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last_name">Last Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input 
+                              class="form-control col-md-7 col-xs-12" 
+                              name="last_name" 
+                              placeholder="Last e.g Deo" 
+                              required="required" 
+                              type="text"
+                              #last_nameRef="ngModel"
+                              ngModel
+                              >
+                              <div class="text-danger" *ngIf="(appoinmentForm.submitted && last_nameRef.errors) || (last_nameRef.invalid && last_nameRef.touched)">Please Enter Last Name</div>
+                            </div>
+                          </div>
+
+                          <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender"> Gender <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <select 
+                              class="form-control col-md-7 col-xs-12" 
+                              name="gender"
+                              type="text"
+                              #genderRef="ngModel"
+                              ngModel
+                              >
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                              </select>
+                              <div class="text-danger" *ngIf="(appoinmentForm.submitted && genderRef.errors) || (genderRef.invalid && genderRef.touched)">Please Enter Gender</div>
+                            </div>
+                          </div>
+
+                          <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input 
+                              type="email"
+                              name="email_id" 
+                              required="required" 
+                              class="form-control col-md-7 col-xs-12"
+                              #email_idRef="ngModel"
+                              ngModel
+                              >
+                            </div>
+                            <div class="text-danger" *ngIf="(appoinmentForm.submitted && email_idRef.errors) || (email_idRef.invalid && email_idRef.touched)">Please Enter Email</div>
+                          </div>
+
+                          <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Phone Number <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input 
+                              type="text"
+                              name="phone_no" 
+                              required="required" 
+                              class="form-control col-md-7 col-xs-12"
+                              #phone_noRef="ngModel"
+                              ngModel
+                              >
+                              <div class="text-danger" *ngIf="(appoinmentForm.submitted && phone_noRef.errors) || (phone_noRef.invalid && phone_noRef.touched)">Please Enter Phone Number</div>
+                            </div>
+
+                          </div>
+
+                          <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_name">User Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input 
+                              class="form-control col-md-7 col-xs-12"
+                              name="user_name" 
+                              placeholder="User e.g Jondeo123" 
+                              required="required" 
+                              type="text"
+                              #user_nameRef="ngModel"
+                              ngModel
+                              >
+                              <div class="text-danger" *ngIf="(appoinmentForm.submitted && user_nameRef.errors) || (user_nameRef.invalid && user_nameRef.touched)">Please Enter User Name</div>
+                            </div>
+                          </div>
+
+                          <div class="item form-group">
+                            <label for="password" class="control-label col-md-3">Password</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input  
+                              type="password" 
+                              name="password"
+                              class="form-control col-md-7 col-xs-12" 
+                              required="required"
+                              #passwordRef="ngModel"
+                              ngModel
+                              >
+                              <div class="text-danger" *ngIf="(appoinmentForm.submitted && passwordRef.errors) || (passwordRef.invalid && passwordRef.touched)">Please Enter Password</div>
+                            </div>
+                          </div>
+
+                          <div class="item form-group">
+                            <label for="date_of_birth" class="control-label col-md-3">Date Of Birth</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input 
+                              type="date" 
+                              name="date_of_birth" 
+                              class="form-control col-md-7 col-xs-12" 
+                              required="required"
+                              #date_of_birthRef="ngModel"
+                              ngModel
+                              >
+                              <div class="text-danger" *ngIf="(appoinmentForm.submitted && date_of_birthRef.errors) || (date_of_birthRef.invalid && date_of_birthRef.touched)">Please Enter Date Of Birth</div>
+                            </div>
+                          </div>
+
+                          <div class="item form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address"> Address <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea id="address" 
+                                required="required" 
+                                name="address" 
+                                class="form-control col-md-7 col-xs-12"
+                                #addressRef="ngModel"
+                                ngModel
+                                ></textarea>
+                                <div class="text-danger" *ngIf="(appoinmentForm.submitted && addressRef.errors) || (addressRef.invalid && addressRef.touched)">Please Enter Address</div>
+                              </div>
+                            </div>
+
+                      </div>
+
+                      <ul>
+                        <li *ngFor="let patientlist of patientlists" >{{patientlist.prn}}</li>
+                      </ul>
+                      
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prnlist">PRN <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select
+                          class="form-control col-md-7 col-xs-12" 
+                          name="prnlist"
+                          required="required"
+                          #prnlistRef="ngModel"
+                          ngModel
+                          >
+                            <option *ngFor="let patientlist of patientlists" value="{{patientlist.prn}}">{{patientlist.prn}}</option>
+                          </select>
+                          <div class="text-danger" *ngIf="(appoinmentForm.submitted && prnlistRef.errors) || (prnlistRef.invalid && prnlistRef.touched)">Please Enter PRN</div>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="doctor">Doctor <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select
+                          class="form-control col-md-7 col-xs-12" 
+                          name="doctorlist"  
+                          required="required" 
+                          #prnlistRef="ngModel"
+                          ngModel
+                          >
+                            <option  *ngFor="let doctorlist of doctorlists" value="{{doctorlist._id}}">{{doctorlist.first_name}} {{doctorlist.last_name}}</option>
+                          </select>
+                          <div class="text-danger" *ngIf="(appoinmentForm.submitted && doctorlistRef.errors) || (doctorlistRef.invalid && doctorlistRef.touched)">Please Enter Doctor</div>
+                        </div>
+                      </div>
+
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+                    </form> -->
+
+
+                    <div class="alert {{class}}" role="alert" id="doc_message" align="center"  *ngIf="message">{{message}}</div>
+                    
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <app-footer></app-footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+</div>
